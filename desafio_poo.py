@@ -1,6 +1,5 @@
 import textwrap
 from abc import ABC, abstractclassmethod, abstractproperty
-from datetime import datetime
 
 
 class Cliente:
@@ -64,7 +63,7 @@ class Conta:
 
         elif valor > 0:
             self._saldo -= valor
-            print("\n=== Saque realizado com sucesso! ===")
+            print("\n Saque realizado com sucesso! ")
             return True
 
         else:
@@ -129,7 +128,7 @@ class Historico:
             {
                 "tipo": transacao.__class__.__name__,
                 "valor": transacao.valor,
-                "data": datetime.now().strftime("%d-%m-%Y %H:%M:%s"),
+                
             }
         )
 
@@ -271,7 +270,7 @@ def criar_cliente(clientes):
     cliente = filtrar_cliente(cpf, clientes)
 
     if cliente:
-        print("\n@@@ Já existe cliente com esse CPF! @@@")
+        print("\n Já existe cliente com esse CPF! ")
         return
 
     nome = input("Informe o nome completo: ")
@@ -290,7 +289,7 @@ def criar_conta(numero_conta, clientes, contas):
     cliente = filtrar_cliente(cpf, clientes)
 
     if not cliente:
-        print("\n@@@ Cliente não encontrado, fluxo de criação de conta encerrado! @@@")
+        print("\nCliente não encontrado, fluxo de criação de conta encerrado! ")
         return
 
     conta = ContaCorrente.nova_conta(cliente=cliente, numero=numero_conta)
@@ -302,7 +301,7 @@ def criar_conta(numero_conta, clientes, contas):
 
 def listar_contas(contas):
     for conta in contas:
-        print("=" * 100)
+        print("=" * 50)
         print(textwrap.dedent(str(conta)))
 
 
